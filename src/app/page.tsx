@@ -1,7 +1,9 @@
 const HomePage = () => {
   return (
-    <main className="flex min-h-screen flex-col items-center p-24">
-      Home Page
+    <main>
+      <h2 className="font-medium text-2xl">
+          Home Page
+      </h2>
     </main>
   )
 }
