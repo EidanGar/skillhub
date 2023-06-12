@@ -1,6 +1,6 @@
 const TeamPage = () => {
     return (
-        <div className="">
+        <div>
             <h2 className="font-medium mb-3 text-2xl">
                 Our Team
             </h2>
