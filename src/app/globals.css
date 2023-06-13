@@ -2,7 +2,13 @@
 @tailwind components;
 @tailwind utilities;
 
+.grid__system {
+    @apply flex mx-auto sm:grid sm:grid-cols-2 xl:grid-cols-3 sm:items-stretch flex-col gap-4 items-center justify-center;
+}
 
+.card {
+    @apply max-w-2xl shadow flex flex-col items-start justify-between gap-3 bg-dark-shaded rounded-xl p-7;
+}
 
 /* Loading */
 

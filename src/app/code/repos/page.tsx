@@ -3,7 +3,11 @@ import { FaStar, FaCodeBranch, FaEye } from "react-icons/fa";
 import { Repository } from "@/app/types";
 
 const fetchRepos = async () => {
-    const response = await fetch("https://api.github.com/users/EidanGar/repos");
+    const response = await fetch("https://api.github.com/users/EidanGar/repos", {
+        next: {
+            revalidate: 60
+        }
+    });
     if (!response.ok) throw new Error("Failed to fetch repositories.");
 
     await new Promise((resolve) => setTimeout(resolve, 1000));
@@ -32,7 +36,7 @@ const RepositoryCard = ({
     stargazers_count
 }: Repository) => {
     return (
-        <Link href={`/code/repos/${name}`} className="hover:-translate-y-2 duration-300 cursor-pointer transition-transform w-full shadow flex flex-col items-start gap-3 bg-dark-shaded rounded-xl p-7">
+        <Link href={`/code/repos/${name}`} className="card hover:-translate-y-2 duration-300 cursor-pointer transition-transform">
             <h2 className="text-xl text-primary-color font-semibold text-left mb-0">
                 {name}
             </h2>
@@ -74,11 +78,11 @@ const ReposPage = async () => {
     const repos = await fetchRepos();
 
     return (
-    <div className="mx-auto max-w-2xl">
+    <div className="mx-auto">
         <h2 className="font-medium mb-5 text-2xl">
             Repositories
         </h2>
-        <div className="flex flex-col gap-5 items-center justify-center">
+        <div className="grid__system">
             {repos.reverse().map((repo: Repository, idx: number) => (
                 <RepositoryCard {...{key:idx, ...repo}} />
             ))}

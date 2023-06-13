@@ -2,7 +2,11 @@ import Link from "next/link";
 import { FaStar, FaCodeBranch, FaEye } from "react-icons/fa"
 
 const fetchRepo = async (name: string, username = "EidanGar") => {
-    const response = await fetch(`https://api.github.com/repos/${username}/${name}`);
+    const response = await fetch(`https://api.github.com/repos/${username}/${name}`, {
+        next: {
+            revalidate: 60
+        }
+    });
     if (!response.ok) throw new Error("Failed to fetch repository.");
     const repo = await response.json();
     return repo;

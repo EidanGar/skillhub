@@ -1,7 +1,7 @@
 import Link from "next/link"
 
 const Header = () => {
-    const headerLinkClass = "hover:opacity-80 font-semibold text-xl transition-opacity duration-300"
+    const headerLinkClass = "hover:opacity-80 font-bold text-xl transition-opacity duration-300"
 
     return (
         <nav className="flex flex-col items-center justify-center sm:flex-row gap-y-5 sm:justify-between mb-10">

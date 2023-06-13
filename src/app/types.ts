@@ -26,3 +26,11 @@ export interface RepositoryData {
         html: string;
     }
 }
+
+export interface Course {
+    id: string;
+    title: string;
+    description: string;
+    link: string;
+    level: string;
+}

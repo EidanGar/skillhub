@@ -3,7 +3,11 @@ import { RepositoryData } from "@/app/types";
 
 const fetchReposContents = async (name: string, username = "EidanGar") => {
     await new Promise((resolve) => setTimeout(resolve, 3000));
-    const response = await fetch(`https://api.github.com/repos/${username}/${name}/contents`);
+    const response = await fetch(`https://api.github.com/repos/${username}/${name}/contents`, {
+        next: {
+            revalidate: 60
+        }
+    });
     if (!response.ok) throw new Error("Failed to fetch repository's content.");
     const repoContent = await response.json();
     return repoContent;
@@ -12,7 +16,6 @@ const fetchReposContents = async (name: string, username = "EidanGar") => {
 const RepoDirs = async ({ name }: { name: string }) => {
     const contents: RepositoryData[] = await fetchReposContents(name);
     const dirs = contents.filter((content) => content.type === "dir");
-    console.log(contents);
 
     return (
         <div>

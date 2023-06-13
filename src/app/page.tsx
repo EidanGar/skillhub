@@ -1,9 +1,12 @@
+import Courses from "./components/Courses";
+
 const HomePage = () => {
   return (
     <main>
-      <h2 className="font-medium text-2xl">
-          Home Page
-      </h2>
+      <h1 className="font-medium text-2xl mb-5">
+          Welcome to Skillhub
+      </h1>
+      <Courses />
     </main>
   )
 }
